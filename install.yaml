@@ -1,0 +1,16 @@
+meta:
+  name: "Gregor's Datacore"
+  root: ~/Data
+  version: 1.0.0
+  agent: hermes
+
+# Root-level modules (optional)
+modules: []
+
+# Personal space (tracked in root repo)
+personal:
+  path: 0-personal
+  modules: []
+
+# Team spaces (each is a separate repo)
+spaces: {}

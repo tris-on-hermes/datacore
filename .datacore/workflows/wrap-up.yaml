@@ -1,0 +1,34 @@
+# /wrap-up workflow
+# End session with journal update, learning capture, and task review
+name: wrap-up
+description: End session with journal update, learning capture, and task review
+command: /wrap-up
+version: 1.0.0
+
+phases:
+  - name: task-review
+    type: tool
+    invoke: org_parser list --file ~/Data/0-personal/org/next_actions.org --states TODO,NEXT
+    description: List open tasks for user review
+
+  - name: journal-update
+    type: tool
+    invoke: datacore.capture journal
+    description: Write session summary to journal
+
+  - name: learning-extraction
+    type: agent
+    invoke: session-learning
+    description: Extract patterns, corrections, insights for PLUR
+
+  - name: engram-ingestion
+    type: tool
+    invoke: plur_ingest
+    description: Save extracted learnings as engrams
+
+  - name: inbox-check
+    type: tool
+    invoke: org_parser count --file ~/Data/0-personal/org/inbox.org
+    description: Verify inbox is at zero
+
+trigger: manual

@@ -1,0 +1,32 @@
+commands:
+  today:
+    description: Morning briefing — sync, nightshift results, calendar, priorities
+    status: active
+    trigger: "today|morning briefing|what's on today"
+
+  wrap-up:
+    description: End session with journal update, learning capture, and task review
+    status: active
+    trigger: "wrap up|session end|done for today"
+
+  continue:
+    description: Resume highest-impact work or find next action
+    status: active
+    trigger: "continue|what next|resume work"
+
+  tomorrow:
+    description: Queue AI tasks for overnight execution
+    status: active
+    trigger: "tomorrow|queue for nightshift|overnight tasks"
+
+  ingest:
+    description: Import content into knowledge base
+    status: active
+    trigger: "ingest|add to knowledge|save this"
+
+  research:
+    description: Multi-phase research pipeline
+    status: active
+    trigger: "research|deep dive|investigate"
+
+module_commands: {}

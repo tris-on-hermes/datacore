@@ -1,0 +1,15 @@
+system_tags:
+  - name: AI
+    description: General AI delegation
+  - name: AI/research
+    description: Research task
+  - name: AI/content
+    description: Content generation
+  - name: AI/data
+    description: Data analysis
+  - name: AI/pm
+    description: Project management
+  - name: AI/technical
+    description: Code/technical (human review required)
+  - name: continuation
+    description: Task to resume in next session

@@ -1,0 +1,30 @@
+# /continue workflow
+# Resume highest-impact work or find next action
+name: continue
+description: Resume highest-impact work or find next action
+command: /continue
+version: 1.0.0
+
+phases:
+  - name: find-continuation
+    type: tool
+    invoke: org_parser list --file ~/Data/0-personal/org/next_actions.org --states TODO,NEXT --tags continuation
+    description: Find tasks tagged for continuation
+
+  - name: check-stale
+    type: agent
+    invoke: stale-task-finder
+    description: Identify tasks that haven't moved in N days
+
+  - name: suggest-next
+    type: agent
+    invoke: daily-briefing-generator
+    action: suggest_next
+    description: Suggest highest-impact next action
+
+  - name: present
+    type: output
+    format: markdown
+    description: Display recommendation to user
+
+trigger: manual

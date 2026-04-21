@@ -1,0 +1,24 @@
+# Composed context files (generated at runtime)
+CLAUDE.md
+SCAFFOLDING.md
+
+# Private layers (never tracked)
+*.local.md
+
+# State and secrets
+.datacore/state/
+.datacore/env/
+
+# Module data (per-space, private)
+.datacore/modules/*/data/
+
+# Obsidian / PKM
+.obsidian/
+.trash/
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc

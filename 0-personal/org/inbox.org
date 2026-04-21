@@ -1,0 +1,9 @@
+#+TITLE: Inbox
+#+STARTUP: overview
+
+* Inbox
+
+** TODO Process this template and delete it :setup:
+[2026-04-21 Tue 15:53]
+
+This is your single capture point. Dump everything here — tasks, ideas, links, notes. Then process regularly using the GTD workflow.

@@ -1,0 +1,26 @@
+agents:
+  inbox-processor:
+    description: Process inbox.org items through GTD clarify/organize workflow
+    status: active
+
+  daily-briefing-generator:
+    description: Compile morning briefing from sync, nightshift, calendar, and priorities
+    status: active
+
+  session-learning:
+    description: Extract patterns and corrections from a completed session for PLUR ingestion
+    status: active
+
+  knowledge-extractor:
+    description: Turn raw content into structured zettel/literature/reference entries
+    status: active
+
+  structural-integrity:
+    description: Audit directory structure and scaffolding completeness
+    status: active
+
+  module-registrar:
+    description: Validate and register new modules in CATALOG.md
+    status: active
+
+module_agents: {}

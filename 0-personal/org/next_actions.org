@@ -1,0 +1,11 @@
+#+TITLE: Next Actions
+#+STARTUP: overview
+
+* Next Actions
+
+** TODO Process inbox to zero
+
+* Projects
+
+** TODO Set up datacore for Hermes :AI:technical:
+SCHEDULED: <2026-04-21 Tue>

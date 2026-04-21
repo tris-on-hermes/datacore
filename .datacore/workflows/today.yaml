@@ -1,0 +1,30 @@
+# /today workflow
+# Morning briefing — sync, nightshift results, habits, calendar, priorities
+name: today
+description: Morning briefing — sync, nightshift results, habits, calendar, priorities
+command: /today
+version: 1.0.0
+
+phases:
+  - name: sync-repos
+    type: tool
+    invoke: sync pull
+    description: Pull latest from all repos
+
+  - name: nightshift-results
+    type: agent
+    invoke: nightshift-orchestrator
+    action: report
+    description: Summarize overnight AI work
+
+  - name: generate-briefing
+    type: agent
+    invoke: daily-briefing-generator
+    description: Compile briefing from all phase outputs
+
+  - name: present
+    type: output
+    format: markdown
+    description: Display briefing to user
+
+trigger: manual
