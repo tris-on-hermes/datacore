@@ -1,62 +1,34 @@
 # /wrap-up workflow
-# Session close — learnings, journal, continuation, push
+# End session with journal update, learning capture, and task review
 name: wrap-up
-description: Session close — learnings, journal, continuation, push
+description: End session with journal update, learning capture, and task review
 command: /wrap-up
 version: 1.0.0
 
 phases:
-  - name: session-summary
-    type: skill
-    invoke: session-summary
-    description: Infer and display session summary from conversation
-
-  - name: emotional-check
-    type: agent
-    invoke: coach
-    optional: true
-    description: Quick pulse check (1-10 scale)
-
-  - name: continuation-task
+  - name: task-review
     type: tool
-    invoke: datacore.gtd.add_task
-    condition: work-incomplete
-    description: Create continuation task with bootstrap context
-
-  - name: mark-completed
-    type: tool
-    invoke: datacore.gtd.complete_task
-    description: Mark completed tasks as DONE
-
-  - name: extract-learnings
-    type: agent
-    invoke: session-learning-coordinator
-    description: Extract patterns and learnings per space
-
-  - name: learning-review
-    type: agent
-    invoke: learning-reviewer
-    optional: true
-    description: Generate engram candidates from new patterns
+    invoke: org_parser list --file ~/Data/0-personal/org/next_actions.org --states TODO,NEXT
+    description: List open tasks for user review
 
   - name: journal-update
+    type: tool
+    invoke: datacore.capture journal
+    description: Write session summary to journal
+
+  - name: learning-extraction
     type: agent
-    invoke: journal-coordinator
-    description: Write journal entries per space
+    invoke: session-learning
+    description: Extract patterns, corrections, insights for PLUR
 
-  - name: artifact-tracking
+  - name: engram-ingestion
     type: tool
-    invoke: datacore.index
-    description: Track knowledge artifacts created this session
+    invoke: plur_ingest
+    description: Save extracted learnings as engrams
 
-  - name: archive-nightshift-reports
-    type: script
-    invoke: python .datacore/lib/nightshift_archival.py --all-spaces
-    description: Archive old nightshift reports (>30 days)
-
-  - name: sync-push
+  - name: inbox-check
     type: tool
-    invoke: sync push
-    description: Push all repos
+    invoke: org_parser count --file ~/Data/0-personal/org/inbox.org
+    description: Verify inbox is at zero
 
 trigger: manual

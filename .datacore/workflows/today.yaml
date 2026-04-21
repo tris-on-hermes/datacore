@@ -1,5 +1,5 @@
 # /today workflow
-# Morning briefing — sync, nightshift results, calendar, priorities
+# Morning briefing — sync, nightshift results, habits, calendar, priorities
 name: today
 description: Morning briefing — sync, nightshift results, habits, calendar, priorities
 command: /today
@@ -11,27 +11,11 @@ phases:
     invoke: sync pull
     description: Pull latest from all repos
 
-  - name: habits-check
-    type: tool
-    invoke: datacore.gtd.habits_due
-    description: Parse habits.org for entries due today
-
   - name: nightshift-results
     type: agent
     invoke: nightshift-orchestrator
     action: report
     description: Summarize overnight AI work
-
-  - name: calendar-scan
-    type: tool
-    invoke: datacore.meetings.upcoming
-    description: Show today's meetings
-
-  - name: health-metrics
-    type: tool
-    invoke: datacore.health.readiness
-    optional: true
-    description: Health readiness from Oura
 
   - name: generate-briefing
     type: agent
@@ -44,10 +28,3 @@ phases:
     description: Display briefing to user
 
 trigger: manual
-hooks:
-  - nightshift-today-hook
-  - ventures-today-hook
-  - meetings-today-hook
-  - crm-today-hook
-  - health-today-hook
-  - news-today-hook
