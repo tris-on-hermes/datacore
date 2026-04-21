@@ -10,6 +10,7 @@ Requires TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in environment or
 """
 
 import argparse
+import asyncio
 import os
 import sys
 from pathlib import Path
@@ -38,7 +39,7 @@ def load_env_file():
                     os.environ.setdefault(k, v.strip().strip('"').strip("'"))
 
 
-def send_message(text: str, bot_token: str = None, chat_id: str = None) -> dict:
+async def send_message(text: str, bot_token: str = None, chat_id: str = None) -> dict:
     load_env_file()
     bot_token = bot_token or os.environ.get("TELEGRAM_BOT_TOKEN")
     chat_id = chat_id or os.environ.get("TELEGRAM_CHAT_ID")
@@ -50,7 +51,7 @@ def send_message(text: str, bot_token: str = None, chat_id: str = None) -> dict:
 
     try:
         bot = Bot(token=bot_token)
-        message = bot.send_message(chat_id=chat_id, text=text, parse_mode="Markdown")
+        message = await bot.send_message(chat_id=chat_id, text=text, parse_mode="Markdown")
         return {
             "ok": True,
             "message_id": message.message_id,
@@ -74,7 +75,7 @@ def main():
     if "\n\n— from" not in text and not text.endswith("— from Tris"):
         text += "\n\n— from Tris"
 
-    result = send_message(text)
+    result = asyncio.run(send_message(text))
     import json
     print(json.dumps(result, indent=2))
     sys.exit(0 if result.get("ok") else 1)
