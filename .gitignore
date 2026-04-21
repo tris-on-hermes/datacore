@@ -1,6 +1,3 @@
-# Team spaces (independent git repos, never track in root scaffold)
-[0-9]-*/
-
 # Composed context files (generated at runtime)
 CLAUDE.md
 SCAFFOLDING.md

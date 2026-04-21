@@ -29,14 +29,4 @@ commands:
     status: active
     trigger: "research|deep dive|investigate"
 
-  sync:
-    description: Fetch upstream and report status for all team spaces
-    status: active
-    trigger: "sync|git sync|update spaces|pull upstream"
-
-  space:
-    description: Manage team spaces — add, list, remove
-    status: active
-    trigger: "space|add space|remove space|list spaces"
-
 module_commands: {}

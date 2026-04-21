@@ -52,7 +52,6 @@ Datacore combines established methodologies with AI augmentation:
 | Space | Purpose | Key Projects |
 |-------|---------|-------------|
 | **0-personal** | GTD, PKM, personal projects | Health, learning, side projects |
-| **2-datacore** | Datacore system development | DIPs, architecture, CLI, modules |
 
 Each space is a separate git repo with its own CLAUDE.md, org files, knowledge base, and journal. When working in a space, its CLAUDE.md loads automatically with space-specific context.
 
@@ -61,16 +60,6 @@ Each space is a separate git repo with its own CLAUDE.md, org files, knowledge b
 - `org/inbox.org` — single capture point (sacred — always return to clean)
 - `org/next_actions.org` — tasks with `:AI:` tags for delegation
 - `notes/` — PKM: journals, zettel, literature, pages, reference
-
-### Datacore Development (2-datacore/)
-
-- `org/inbox.org` / `org/next_actions.org` — system tasks tagged with `:AI:`
-- `1-tracks/` — active work: ops, product, dev/architecture, research, comms
-- `3-knowledge/` — system knowledge: pages, zettel, literature, reference
-- `contacts/` — people, companies, projects, events (CRM data)
-- `journal/` — daily entries
-
-This space is a direct clone of `datacore-one/datacore-space` (not a fork) — contributions push upstream.
 
 ## Finding Things
 
@@ -97,12 +86,6 @@ Don't start from scratch when context might already exist.
 Datacore is extensible via **modules** — self-contained packages that add agents, commands, tools, and context to specific domains. Each lives in `.datacore/modules/<name>/` with a `module.yaml` manifest.
 
 Modules hook into workflows (e.g., adding sections to `/today`), register their own agents, and provide tools. Their CLAUDE.md loads on-demand when the domain is relevant.
-
-Installed modules:
-- **crm** (`.datacore/modules/crm/`) — Network intelligence, contacts, relationships, landscape tracking. Triggers: "CRM dashboard", "look up contact", "who do I know at"
-- **telegram** (`.datacore/modules/telegram/`) — Notifications via @TrisHermes_bot
-- **org** (`.datacore/modules/org/`) — Organization space template (reference)
-- **cli** (`.datacore/modules/cli/`) — CLI tooling reference (source code)
 
 <!-- REGISTRY:modules -->
 
