@@ -70,6 +70,10 @@ def main():
     if args.topic:
         text = f"*{args.topic}*\n{text}"
 
+    # Default signature as Tris (bot identity)
+    if "\n\n— from" not in text and not text.endswith("— from Tris"):
+        text += "\n\n— from Tris"
+
     result = send_message(text)
     import json
     print(json.dumps(result, indent=2))
