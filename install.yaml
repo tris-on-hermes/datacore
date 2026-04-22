@@ -1,0 +1,48 @@
+version: "2.0"
+spaces:
+  - path: 0-personal
+    name: personal
+    repo: null
+    type: personal
+  - path: 2-datacore
+    name: datacore
+    repo: https://github.com/datacore-one/datacore-space
+    type: team
+    upstream_only: true
+  - path: 3-plur
+    name: plur
+    repo: https://github.com/plur-ai/plur-space
+    type: team
+modules:
+  - name: crm
+    path: .datacore/modules/crm
+    repo: https://github.com/datacore-one/datacore-crm
+    status: active
+  - name: gtd
+    path: .datacore/modules/gtd
+    repo: https://github.com/datacore-one/datacore-gtd
+    status: active
+  - name: outbox
+    path: .datacore/modules/outbox
+    repo: https://github.com/datacore-one/datacore-outbox
+    status: active
+  - name: research
+    path: .datacore/modules/research
+    repo: https://github.com/datacore-one/datacore-research
+    status: active
+  - name: ventures
+    path: .datacore/modules/ventures
+    repo: https://github.com/datacore-one/datacore-ventures
+    status: active
+  - name: voice-terminal
+    path: .datacore/modules/voice-terminal
+    repo: https://github.com/datacore-one/datacore-voice-terminal
+    status: active
+  - name: whatsapp
+    path: .datacore/modules/whatsapp
+    repo: https://github.com/datacore-one/datacore-whatsapp
+    status: active
+  - name: comms
+    path: .datacore/modules/comms
+    repo: https://github.com/datacore-one/datacore-comms
+    status: active
